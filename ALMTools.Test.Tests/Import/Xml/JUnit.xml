@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Created by Chutzpah javascript test runner -->
+<testsuites>
+  <testsuite name="C:\Temp\Chutzpah.2.2.1\ExampleTests\qunitTests.html" tests="6" failures="2" time="76">
+    <testcase name="A basic test" />
+    <testcase name="stringLib:will get vowel count" />
+    <testcase name="mathLib:will add 5 to number" />
+    <testcase name="mathLib:will multiply 5 to number" />
+    <testcase name="failing:is not equal">
+      <failure message="assert description"></failure>
+    </testcase>
+    <testcase name="failing:null reference">
+      <failure message="Died on test #1: &apos;null&apos; is not an object (evaluating &apos;hej.inget&apos;) - { &quot;message&quot;: &quot;&apos;null&apos; is not an object (evaluating &apos;hej.inget&apos;)&quot;, &quot;line&quot;: 42, &quot;sourceId&quot;: 62298200, &quot;sourceURL&quot;: &quot;file:///C:/Temp/Chutzpah.2.2.1/ExampleTests/qunitTests.js&quot;, &quot;stack&quot;: &quot;TypeError: &apos;null&apos; is not an object (evaluating &apos;hej.inget&apos;)&#10;    at file:///C:/Temp/Chutzpah.2.2.1/ExampleTests/qunitTests.js:42&#10;    at file:///C:/Temp/Chutzpah.2.2.1/ExampleTests/lib/qunit.js:102&#10;    at file:///C:/Temp/Chutzpah.2.2.1/ExampleTests/lib/qunit.js:232&#10;    at process (file:///C:/Temp/Chutzpah.2.2.1/ExampleTests/lib/qunit.js:859)&#10;    at file:///C:/Temp/Chutzpah.2.2.1/ExampleTests/lib/qunit.js:408&quot;, &quot;stackArray&quot;: [ { &quot;sourceURL&quot;: &quot;file:///C:/Temp/Chutzpah.2.2.1/ExampleTests/qunitTests.js&quot;, &quot;line&quot;: 42 }, { &quot;sourceURL&quot;: &quot;file:///C:/Temp/Chutzpah.2.2.1/ExampleTests/lib/qunit.js&quot;, &quot;line&quot;: 102 }, { &quot;sourceURL&quot;: &quot;file:///C:/Temp/Chutzpah.2.2.1/ExampleTests/lib/qunit.js&quot;, &quot;line&quot;: 232 }, { &quot;function&quot;: &quot;process&quot;, &quot;sourceURL&quot;: &quot;file:///C:/Temp/Chutzpah.2.2.1/ExampleTests/lib/qunit.js&quot;, &quot;line&quot;: 859 }, { &quot;sourceURL&quot;: &quot;file:///C:/Temp/Chutzpah.2.2.1/ExampleTests/lib/qunit.js&quot;, &quot;line&quot;: 408 } ], &quot;name&quot;: &quot;TypeError&quot; }"></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

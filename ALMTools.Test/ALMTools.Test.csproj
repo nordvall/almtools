@@ -40,7 +40,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Import\IResultParser.cs" />
+    <Compile Include="Import\JUnitResultParser.cs" />
+    <Compile Include="Import\NUnitResultParser.cs" />
+    <Compile Include="Import\Schemas\JUnit.cs">
+      <DependentUpon>JUnit.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Import\Schemas\NUnit.cs">
+      <DependentUpon>NUnit.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Import\Schemas\JUnit.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Import\Schemas\NUnit.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4F228E26
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALMTools.Build.Tests", "ALMTools.Build.Tests\ALMTools.Build.Tests.csproj", "{95DC2242-E27F-4811-87D1-4CED0DC3AD81}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALMTools.Test.Tests", "ALMTools.Test.Tests\ALMTools.Test.Tests.csproj", "{9073501C-2EFB-43A9-B4D2-5D42928B6FE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,11 +29,16 @@ Global
 		{95DC2242-E27F-4811-87D1-4CED0DC3AD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95DC2242-E27F-4811-87D1-4CED0DC3AD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95DC2242-E27F-4811-87D1-4CED0DC3AD81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9073501C-2EFB-43A9-B4D2-5D42928B6FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9073501C-2EFB-43A9-B4D2-5D42928B6FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9073501C-2EFB-43A9-B4D2-5D42928B6FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9073501C-2EFB-43A9-B4D2-5D42928B6FE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{95DC2242-E27F-4811-87D1-4CED0DC3AD81} = {4F228E26-A815-4B8C-B001-D51CBC18A19A}
+		{9073501C-2EFB-43A9-B4D2-5D42928B6FE8} = {4F228E26-A815-4B8C-B001-D51CBC18A19A}
 	EndGlobalSection
 EndGlobal
