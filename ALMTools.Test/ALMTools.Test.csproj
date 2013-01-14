@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Import\IResultParser.cs" />
     <Compile Include="Import\JUnitResultParser.cs" />
     <Compile Include="Import\NUnitResultParser.cs" />

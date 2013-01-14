@@ -65,7 +65,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Import\Xml\NUnit.xml" />
+    <EmbeddedResource Include="Import\Xml\NUnit.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Import\Xml\JUnit.xml" />
