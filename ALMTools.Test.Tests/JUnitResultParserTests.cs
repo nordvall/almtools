@@ -47,6 +47,13 @@ namespace ALMTools.Test.Tests
         }
 
         [TestMethod]
+        public void ExecutedTests_WhenTestsIs6_6IsReturned()
+        {
+            var parser = new JUnitResultParser(_stream);
+            Assert.AreEqual(6, parser.ExecutedTests);
+        }
+
+        [TestMethod]
         public void PassedTests_WhenNativeFileDeclares6totalAnd2failed_4IsReturned()
         {
             var parser = new JUnitResultParser(_stream);
@@ -76,6 +83,13 @@ namespace ALMTools.Test.Tests
             var parser = new JUnitResultParser(_stream);
             var expectedTime = new TimeSpan(0, 0, 0, 0, 76);
             Assert.AreEqual(expectedTime, parser.Duration);
+        }
+
+        [TestMethod]
+        public void Result_WhenErrorsExist_FailedIsReturned()
+        {
+            var parser = new JUnitResultParser(_stream);
+            Assert.AreEqual(ResultStatus.Failed, parser.Result);
         }
     }
 }

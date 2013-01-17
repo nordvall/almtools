@@ -69,6 +69,13 @@ namespace ALMTools.Test.Tests
         }
 
         [TestMethod]
+        public void ExecutedTests_WhenTotalIs9_9IsReturned()
+        {
+            var parser = new NUnitResultParser(_stream);
+            Assert.AreEqual(9, parser.ExecutedTests);
+        }
+
+        [TestMethod]
         public void InconclusiveTests_WhenInconclusiveIs5_5TimeIsReturned()
         {
             var parser = new NUnitResultParser(_stream);
@@ -81,6 +88,13 @@ namespace ALMTools.Test.Tests
             var parser = new NUnitResultParser(_stream);
             var expectedTime = new TimeSpan(0, 0, 0, 0, 403);
             Assert.AreEqual(expectedTime, parser.Duration);
+        }
+
+        [TestMethod]
+        public void Result_WhenStatusIsFailed_FailureIsReturned()
+        {
+            var parser = new NUnitResultParser(_stream);
+            Assert.AreEqual(ResultStatus.Failed, parser.Result);
         }
     }
 }

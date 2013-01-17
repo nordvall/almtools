@@ -12,10 +12,11 @@ namespace ALMTools.Test.Import
         string TestName { get; }
         string ComputerName { get; }
         string UserName { get; }
-        int TotalTests {get;}
-        int ExecutedTests {get;}
-        int FailedTests {get;}
-        int PassedTests {get;}
-        int InconclusiveTests {get;}
+        int TotalTests { get; }
+        int ExecutedTests { get; }
+        int FailedTests { get; }
+        int PassedTests { get; }
+        int InconclusiveTests { get; }
+        ResultStatus Result { get; }
     }
 }

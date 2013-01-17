@@ -117,5 +117,27 @@ namespace ALMTools.Test.Import
                 return timeSpan;
             }
         }
+
+        public ResultStatus Result
+        {
+            get
+            {
+                switch (_nativeResult.testsuite.result)
+                {
+                    case "Failure":
+                        return ResultStatus.Failed;
+                    case "Success":
+                        return ResultStatus.Passed;
+                    case "Inconclusive":
+                        return ResultStatus.Inconclusive;
+                    case "Error":
+                        return ResultStatus.Failed;
+                    case "Ignored":
+                        return ResultStatus.NotExecuted;
+                    default:
+                        return ResultStatus.None;
+                }
+            }
+        }
     }
 }

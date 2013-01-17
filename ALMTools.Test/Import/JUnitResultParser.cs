@@ -102,7 +102,19 @@ namespace ALMTools.Test.Import
             }
         }
 
-
-        
+        public ResultStatus Result
+        {
+            get
+            {
+                if (_nativeResult.failures > 0)
+                {
+                    return ResultStatus.Failed;
+                }
+                else
+                {
+                    return ResultStatus.Passed;
+                }
+            }
+        }
     }
 }
