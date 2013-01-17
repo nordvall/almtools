@@ -8,6 +8,10 @@ namespace ALMTools.Test.Import
     public interface IResultParser
     {
         DateTime ExecutionTime { get; }
+        TimeSpan Duration { get; }
+        string TestName { get; }
+        string ComputerName { get; }
+        string UserName { get; }
         int TotalTests {get;}
         int ExecutedTests {get;}
         int FailedTests {get;}

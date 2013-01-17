@@ -37,34 +37,72 @@ namespace ALMTools.Test.Import
             _nativeResult = suites.testsuite[0];
         }
 
+        public string TestName
+        {
+            get { return Path.GetFileNameWithoutExtension(_nativeResult.name); }
+        }
+
+        public string ComputerName
+        {
+            get { return _nativeResult.hostname; }
+        }
+
+        public string UserName
+        {
+            get { return Environment.UserName; }
+        }
+
         public int TotalTests
         {
-            get { throw new NotImplementedException(); }
+            get { return _nativeResult.tests; }
         }
 
         public int ExecutedTests
         {
-            get { throw new NotImplementedException(); }
+            get { return _nativeResult.tests; }
         }
 
         public int FailedTests
         {
-            get { throw new NotImplementedException(); }
+            get { return _nativeResult.failures; }
         }
 
         public int PassedTests
         {
-            get { throw new NotImplementedException(); }
+            get { return (_nativeResult.tests - _nativeResult.failures); }
         }
 
         public int InconclusiveTests
         {
-            get { throw new NotImplementedException(); }
+            get { return 0; }
         }
 
         public DateTime ExecutionTime
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                if (_nativeResult.timestamp == DateTime.MinValue)
+                {
+                    return DateTime.Now;
+                }
+                else
+                {
+                    return _nativeResult.timestamp;
+                }
+            }
         }
+
+        public TimeSpan Duration
+        {
+            get 
+            { 
+                int milliseconds = Convert.ToInt32(_nativeResult.time);
+                var timeSpan = new TimeSpan(0, 0, 0, 0, milliseconds);
+                return timeSpan;
+            }
+        }
+
+
+        
     }
 }

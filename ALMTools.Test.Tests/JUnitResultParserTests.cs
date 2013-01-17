@@ -19,9 +19,63 @@ namespace ALMTools.Test.Tests
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void ComputerName_WhenNativeFileDoesNotDeclareMachineName_EmptyValueIsReturned()
         {
             var parser = new JUnitResultParser(_stream);
+            Assert.AreEqual(null, parser.ComputerName);
+        }
+
+        [TestMethod]
+        public void TestName_WhenNativeFileDeclaresTestPath_FilenameWithoutPathAndSuffixIsReturned()
+        {
+            var parser = new JUnitResultParser(_stream);
+            Assert.AreEqual("qunitTests", parser.TestName);
+        }
+
+        [TestMethod]
+        public void UserName_CurrentUserIsReturned()
+        {
+            var parser = new JUnitResultParser(_stream);
+            Assert.AreEqual(Environment.UserName, parser.UserName);
+        }
+
+        [TestMethod]
+        public void TotalTests_WhenNativeFileDeclares6_6IsReturned()
+        {
+            var parser = new JUnitResultParser(_stream);
+            Assert.AreEqual(6, parser.TotalTests);
+        }
+
+        [TestMethod]
+        public void PassedTests_WhenNativeFileDeclares6totalAnd2failed_4IsReturned()
+        {
+            var parser = new JUnitResultParser(_stream);
+            Assert.AreEqual(4, parser.PassedTests);
+        }
+
+        [TestMethod]
+        public void ExecutionTime_WhenDateAndTimeIsNotSet_CurrentDateTimeIsReturned()
+        {
+            var parser = new JUnitResultParser(_stream);
+            
+            // Assert DayOfYear because DateTime.Now in itself is difficult.
+            Assert.AreEqual(DateTime.Now.DayOfYear, parser.ExecutionTime.DayOfYear);
+        }
+
+        [TestMethod]
+        public void FailedTests_WhenFailuresIs2_2IsReturned()
+        {
+            var parser = new JUnitResultParser(_stream);
+            
+            Assert.AreEqual(2, parser.FailedTests);
+        }
+
+        [TestMethod]
+        public void Duration_WhenTimeIs76_CorrectTimeSpanIsReturned()
+        {
+            var parser = new JUnitResultParser(_stream);
+            var expectedTime = new TimeSpan(0, 0, 0, 0, 76);
+            Assert.AreEqual(expectedTime, parser.Duration);
         }
     }
 }

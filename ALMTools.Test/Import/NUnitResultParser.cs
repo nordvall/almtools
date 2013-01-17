@@ -35,6 +35,21 @@ namespace ALMTools.Test.Import
             _nativeResult = (resultType)serializer.Deserialize(reader);
         }
 
+        public string TestName 
+        {
+            get { return Path.GetFileNameWithoutExtension(_nativeResult.name); }
+        }
+
+        public string ComputerName 
+        {
+            get { return _nativeResult.environment.machinename; }
+        }
+
+        public string UserName 
+        {
+            get { return _nativeResult.environment.user; }
+        }
+
         public int TotalTests
         {
             get { return Convert.ToInt32(_nativeResult.total + _nativeResult.notrun); }
@@ -81,6 +96,25 @@ namespace ALMTools.Test.Import
                 string datetimestring = string.Format("{0} {1}", _nativeResult.date, _nativeResult.time);
                 var date = DateTime.Parse(datetimestring);
                 return date;
+            }
+        }
+
+
+        public TimeSpan Duration
+        {
+            get 
+            {
+                string timeString = _nativeResult.testsuite.time;
+                string[] timeParts = timeString.Split('.');
+                int seconds = Convert.ToInt32(timeParts[0]);
+                int milliseconds = 0;
+                if (timeParts.Length > 1)
+                {
+                    milliseconds = Convert.ToInt32(timeParts[1]);
+                }
+
+                var timeSpan = new TimeSpan(0, 0, 0, seconds, milliseconds);
+                return timeSpan;
             }
         }
     }
