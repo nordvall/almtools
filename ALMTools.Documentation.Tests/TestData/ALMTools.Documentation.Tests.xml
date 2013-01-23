@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DocGenerator.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:ALMTools.Documentation.Tests.TestData.TestClass">
+            <summary>
+            Class used for documentation testing
+            </summary>
+        </member>
+        <member name="F:ALMTools.Documentation.Tests.TestData.TestClass._private">
+            <summary>
+            Stores a private string
+            </summary>
+        </member>
+        <member name="M:ALMTools.Documentation.Tests.TestData.TestClass.#ctor">
+            <summary>
+            Constructor with no arguments
+            </summary>
+        </member>
+        <member name="M:ALMTools.Documentation.Tests.TestData.TestClass.#ctor(System.String)">
+            <summary>
+            Constructor with string arument
+            </summary>
+            <param name="argument">The text to provide</param>
+        </member>
+        <member name="M:ALMTools.Documentation.Tests.TestData.TestClass.PublicVoidMethodWithoutArguments">
+            <summary>
+            Public method with no return value
+            </summary>
+        </member>
+        <member name="M:ALMTools.Documentation.Tests.TestData.TestClass.PublicVoidMethodWithTwoArguments(System.Int32,System.String)">
+            <summary>
+            Public method with two arguments
+            </summary>
+            <param name="first">Number of days</param>
+            <param name="second">Name of city</param>
+        </member>
+        <member name="M:ALMTools.Documentation.Tests.TestData.TestClass.PrivateVoidMethodWithoutArguments">
+            <summary>
+            Private method with no return value
+            </summary>
+        </member>
+        <member name="M:ALMTools.Documentation.Tests.TestData.TestClass.PrivateVoidMethodWithTwoArguments(System.Int32,System.String)">
+            <summary>
+            Private method with two arguments
+            </summary>
+            <param name="first">Age of person</param>
+            <param name="second">Favorite soccer team</param>
+        </member>
+        <member name="M:ALMTools.Documentation.Tests.TestData.TestClass.PublicStringMethodWithNoArguments">
+            <summary>
+            Public method with return value of string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ALMTools.Documentation.Tests.TestData.TestClass.PublicStringMethodWithTwoArguments(System.DateTime,System.Double)">
+            <summary>
+            Public method with return value and two arguments
+            </summary>
+            <param name="time">Time to retire</param>
+            <param name="days">Days since the beginning</param>
+            <returns>Word of wisdom</returns>
+        </member>
+        <member name="M:ALMTools.Documentation.Tests.TestData.TestClass.PrivateStringMethodWithNoArguments">
+            <summary>
+            Public method with return value of string
+            </summary>
+            <returns>name of city</returns>
+        </member>
+        <member name="M:ALMTools.Documentation.Tests.TestData.TestClass.PrivateStringMethodWithTwoArguments(System.DateTime,System.Double)">
+            <summary>
+            Private method with return value and two arguments
+            </summary>
+            <param name="time">Time of day</param>
+            <param name="days">Days left</param>
+            <returns>Favorite color</returns>
+        </member>
+        <member name="P:ALMTools.Documentation.Tests.TestData.TestClass.PublicStringProperty">
+            <summary>
+            Name of current president
+            </summary>
+        </member>
+        <member name="P:ALMTools.Documentation.Tests.TestData.TestClass.PublicIntProperty">
+            <summary>
+            Population in Sandviken
+            </summary>
+        </member>
+    </members>
+</doc>
