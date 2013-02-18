@@ -80,23 +80,24 @@ namespace ALMTools.Documentation.Import
             string xmlMethodName = GetXmlMethodName(method);
             var descriptionElement = GetMemberDescriptionElement(xmlMethodName);
 
-            XElement paramElement = descriptionElement.Elements("param").FirstOrDefault(p => p.Attribute("name").Value == parameterName);
-            if (paramElement != null)
+            if (descriptionElement != null)
             {
-                var description = paramElement.Value.Trim();
-                return description;
+                XElement paramElement = descriptionElement.Elements("param").FirstOrDefault(p => p.Attribute("name").Value == parameterName);
+                if (paramElement != null && string.IsNullOrEmpty(paramElement.Value) == false)
+                {
+                    var description = paramElement.Value.Trim();
+                    return description;
+                }
             }
-            else
-            {
-                return null;
-            }
+            
+            return null;
         }
 
         public string GetReturnValueDescription(MethodInfo method)
         {
             string xmlMethodName = GetXmlMethodName(method);
             var descriptionElement = GetMemberDescriptionElement(xmlMethodName);
-            if (descriptionElement.Element("returns") != null)
+            if (descriptionElement != null && descriptionElement.Element("returns") != null)
             {
                 return descriptionElement.Element("returns").Value.Trim();
             }

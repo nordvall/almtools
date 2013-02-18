@@ -6,14 +6,14 @@ using System.Text;
 
 namespace ALMTools.Documentation
 {
-    public class Utilities
+    public static class TypeExtensionMethods
     {
         /// <summary>
         /// Translates List`1 to more readable form
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static string GetFriendlyTypeName(Type type)
+        public static string GetFriendlyTypeName(this Type type)
         {
             if (type.IsGenericType == false)
             {
@@ -27,7 +27,7 @@ namespace ALMTools.Documentation
                 for (int i=0; i < genericTypeArguments.Length; i++)
                 {
                     // Recursive. InnerPart could also be generic.
-                    innerParts[i] = GetFriendlyTypeName(genericTypeArguments[i]);
+                    innerParts[i] = genericTypeArguments[i].GetFriendlyTypeName();
                 }
                 
                 return string.Format("{0}<{1}>", outerPart, string.Join(",", innerParts));

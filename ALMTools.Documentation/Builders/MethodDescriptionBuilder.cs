@@ -51,7 +51,7 @@ namespace ALMTools.Documentation
             }
 
             var returnValue = new ReturnValueDescription();
-            returnValue.TypeName = Utilities.GetFriendlyTypeName(method.ReturnType);
+            returnValue.TypeName = method.ReturnType.GetFriendlyTypeName();
             returnValue.Description = _xmlParser.GetReturnValueDescription(method);
 
             return returnValue;
@@ -76,7 +76,7 @@ namespace ALMTools.Documentation
             var description = new ArgumentDescription()
             {
                 ArgumentName = parameter.Name,
-                ArgumentType = Utilities.GetFriendlyTypeName(parameter.ParameterType)
+                ArgumentType = parameter.ParameterType.GetFriendlyTypeName()
             };
 
             description.Description = _xmlParser.GetParamaterDescription(method, parameter.Name);

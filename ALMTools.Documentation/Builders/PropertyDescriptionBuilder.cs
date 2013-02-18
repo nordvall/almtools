@@ -32,7 +32,7 @@ namespace ALMTools.Documentation
             var propertyDesc = new PropertyDescription()
             {
                 Name = property.Name,
-                TypeName = Utilities.GetFriendlyTypeName(property.PropertyType)
+                TypeName = property.PropertyType.GetFriendlyTypeName()
             };
 
             propertyDesc.Summary = _xmlParser.GetPropertySummary(property);
