@@ -48,7 +48,8 @@
     <Compile Include="Import\Schemas\NUnit.cs">
       <DependentUpon>NUnit.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Import\ResultStatus.cs" />
+    <Compile Include="Import\TestResultStatus.cs" />
+    <Compile Include="Import\TestCaseResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

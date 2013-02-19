@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ALMTools.Test.Import
 {
-    public enum ResultStatus
+    public enum TestResultStatus
     {
         Unspecified = 0,
         None = 1,

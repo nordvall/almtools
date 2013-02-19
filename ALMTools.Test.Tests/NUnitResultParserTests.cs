@@ -94,7 +94,15 @@ namespace ALMTools.Test.Tests
         public void Result_WhenStatusIsFailed_FailureIsReturned()
         {
             var parser = new NUnitResultParser(_stream);
-            Assert.AreEqual(ResultStatus.Failed, parser.Result);
+            Assert.AreEqual(TestResultStatus.Failed, parser.Result);
+        }
+
+        [TestMethod]
+        public void TestCases_WhenNativeFileContains5tests_5testcasesAreReturned()
+        {
+            var parser = new NUnitResultParser(_stream);
+            var result = parser.TestCases;
+            Assert.AreEqual(10, result.Count);
         }
     }
 }

@@ -89,7 +89,15 @@ namespace ALMTools.Test.Tests
         public void Result_WhenErrorsExist_FailedIsReturned()
         {
             var parser = new JUnitResultParser(_stream);
-            Assert.AreEqual(ResultStatus.Failed, parser.Result);
+            Assert.AreEqual(TestResultStatus.Failed, parser.Result);
+        }
+
+        [TestMethod]
+        public void TestCases_WhenNativeFileContains5tests_5testcasesAreReturned()
+        {
+            var parser = new JUnitResultParser(_stream);
+            var result = parser.TestCases;
+            Assert.AreEqual(6, result.Count);
         }
     }
 }

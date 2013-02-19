@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -118,26 +119,100 @@ namespace ALMTools.Test.Import
             }
         }
 
-        public ResultStatus Result
+        public TestResultStatus Result
         {
             get
             {
-                switch (_nativeResult.testsuite.result)
+                return ConvertNUnitResultStatus(_nativeResult.testsuite.result);              
+            }
+        }
+
+        private TestResultStatus ConvertNUnitResultStatus(string result)
+        {
+            switch (result)
+            {
+                case "Failure":
+                    return TestResultStatus.Failed;
+                case "Success":
+                    return TestResultStatus.Passed;
+                case "Inconclusive":
+                    return TestResultStatus.Inconclusive;
+                case "Error":
+                    return TestResultStatus.Failed;
+                case "Ignored":
+                    return TestResultStatus.NotExecuted;
+                default:
+                    return TestResultStatus.None;
+            }
+        }
+
+
+        public ReadOnlyCollection<TestCaseResult> TestCases
+        {
+            get 
+            {
+                var cases = ReadTestCases(_nativeResult.testsuite);
+                return new ReadOnlyCollection<TestCaseResult>(cases);
+            }
+        }
+
+        private List<TestCaseResult> ReadTestCases(testsuiteType suite)
+        {
+            if (suite.results == null)
+                return null;
+
+            var results = new List<TestCaseResult>();
+            
+            foreach (object obj in suite.results.Items)
+            {
+                if (obj is testsuiteType)
                 {
-                    case "Failure":
-                        return ResultStatus.Failed;
-                    case "Success":
-                        return ResultStatus.Passed;
-                    case "Inconclusive":
-                        return ResultStatus.Inconclusive;
-                    case "Error":
-                        return ResultStatus.Failed;
-                    case "Ignored":
-                        return ResultStatus.NotExecuted;
-                    default:
-                        return ResultStatus.None;
+                    var nextLevelResults = ReadTestCases(obj as testsuiteType);
+                    results.AddRange(nextLevelResults);
+                }
+                else if (obj is testcaseType)
+                {
+                    TestCaseResult result = ParseTest(obj as testcaseType);
+                    results.Add(result);
                 }
             }
+
+            return results;
+        }
+
+        private TestCaseResult ParseTest(testcaseType test)
+        {
+            var result = new TestCaseResult();
+
+            string fullName = test.name;
+            result.TestCaseName = test.name.Substring(fullName.LastIndexOf('.') + 1);
+            result.ModuleName = test.name.Substring(0, fullName.LastIndexOf('.'));
+
+            if (bool.Parse(test.executed) == true)
+            {
+                if (string.IsNullOrEmpty(test.time) == false)
+                {
+                    string[] time = test.time.Split('.');
+                    result.Duration = new TimeSpan(0, 0, 0, int.Parse(time[0]), int.Parse(time[1]));
+                }
+            }
+
+            result.Result = ConvertNUnitResultStatus(test.result);
+
+            if (test.Item is reasonType)
+            {
+                var reason = test.Item as reasonType;
+                result.Message = reason.message;
+            }
+
+            if (test.Item is failureType)
+            {
+                var failure = test.Item as failureType;
+                result.Message = failure.message;
+                result.StackTrace = failure.stacktrace;
+            }
+
+            return result;
         }
     }
 }

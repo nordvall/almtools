@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -102,18 +103,46 @@ namespace ALMTools.Test.Import
             }
         }
 
-        public ResultStatus Result
+        public TestResultStatus Result
         {
             get
             {
                 if (_nativeResult.failures > 0)
                 {
-                    return ResultStatus.Failed;
+                    return TestResultStatus.Failed;
                 }
                 else
                 {
-                    return ResultStatus.Passed;
+                    return TestResultStatus.Passed;
                 }
+            }
+        }
+
+        public ReadOnlyCollection<TestCaseResult> TestCases
+        {
+            get
+            {
+                var cases = new List<TestCaseResult>();
+                foreach (testsuiteTestcase jUnitTestCase in _nativeResult.testcase)
+                {
+                    var result = new TestCaseResult();
+                    result.TestCaseName = jUnitTestCase.name;
+                    result.ModuleName = jUnitTestCase.classname;
+                    if (jUnitTestCase.Item is testsuiteTestcaseFailure)
+                    {
+                        var failure = jUnitTestCase.Item as testsuiteTestcaseFailure;
+                        result.Result = TestResultStatus.Failed;
+                        result.Message = failure.message;
+                        result.StackTrace = failure.Value;
+                    }
+                    else
+                    {
+                        result.Result = TestResultStatus.Passed;
+                    }
+                    cases.Add(result);
+                }
+
+                return new ReadOnlyCollection<TestCaseResult>(cases);
             }
         }
     }

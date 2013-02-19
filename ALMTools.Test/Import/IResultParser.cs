@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -17,6 +18,7 @@ namespace ALMTools.Test.Import
         int FailedTests { get; }
         int PassedTests { get; }
         int InconclusiveTests { get; }
-        ResultStatus Result { get; }
+        TestResultStatus Result { get; }
+        ReadOnlyCollection<TestCaseResult> TestCases { get; }
     }
 }
