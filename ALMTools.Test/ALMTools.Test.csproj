@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Export\TrxGenerator.cs" />
     <Compile Include="Import\IResultParser.cs" />
     <Compile Include="Import\JUnitResultParser.cs" />
     <Compile Include="Import\NUnitResultParser.cs" />
@@ -59,6 +60,9 @@
     <None Include="Import\Schemas\NUnit.xsd">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Export\BaseTrx.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
