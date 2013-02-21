@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Export\BasicDataTransformer.cs" />
+    <Compile Include="Export\TestCaseTransformer.cs" />
     <Compile Include="Export\TrxGenerator.cs" />
+    <Compile Include="Export\TrxHelper.cs" />
     <Compile Include="Import\IResultParser.cs" />
     <Compile Include="Import\JUnitResultParser.cs" />
     <Compile Include="Import\NUnitResultParser.cs" />
