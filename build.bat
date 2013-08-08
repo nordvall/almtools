@@ -1,1 +1,1 @@
-C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe ALMTools.sln /p:Configuration=Release
+%windir%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe ALMTools.sln /p:Configuration=Release
